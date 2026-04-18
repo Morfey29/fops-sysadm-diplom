@@ -1,0 +1,33 @@
+---
+- name: Установка Nginx на веб-серверах
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes
+
+    - name: Enable and start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes    
+
+    - name: Remove default nginx index page
+      copy:
+        content: "<html><head><title>Netology. HTML Template</title></head><body><h1>Netology. Template</h1></body></html>"
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+
+      notify:
+        - Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted

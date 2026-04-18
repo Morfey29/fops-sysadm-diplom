@@ -6,4 +6,4 @@ users:
     lock_passwd: true
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
-      - ssh-ed25519
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxFGoRJilA9UV7djpbeGbJfpo2L6V2TnUsAhRBRsoRF morfey@MacBookPro--Anatoliy.local

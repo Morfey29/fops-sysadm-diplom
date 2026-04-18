@@ -1,8 +1,3 @@
-#variable "flow" {
-# type    = string
-#  default = "flow"
-#}
-
 variable "cloud_id" {
   type    = string
   default = "b1gkuqs6ubuo8pkmr699"

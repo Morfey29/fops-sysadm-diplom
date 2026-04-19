@@ -4,8 +4,8 @@
   become: yes
   gather_facts: true
   vars:
-    kibana_host: 10.0.4.29:5601
-    elastic_host: 10.0.3.25:9200
+    kibana_host: "{{ hostvars[groups['kibana'][0]]['ansible_host'] }}:5601"
+    elastic_host: "{{ hostvars[groups['elastic'][0]]['ansible_host'] }}:9200"
   tasks:
   - name: Устанавливаем filebeat
     apt:

@@ -1,0 +1,76 @@
+---
+- name: Исправление PID file ошибки Zabbix Agent
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Остановка агента
+      systemd:
+        name: zabbix-agent
+        state: stopped
+      ignore_errors: yes
+
+    - name: Убить процессы
+      shell: pkill -9 zabbix_agentd
+      ignore_errors: yes
+
+    - name: Создание директорий для PID
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: zabbix
+        group: zabbix
+        mode: '0755'
+      loop:
+        - /run/zabbix
+        - /var/run/zabbix
+
+    - name: Удаление старых PID файлов
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /run/zabbix/zabbix_agentd.pid
+        - /var/run/zabbix/zabbix_agentd.pid
+
+    - name: Исправление пути PID в конфигурации
+      lineinfile:
+        path: /etc/zabbix/zabbix_agentd.conf
+        regexp: '^PidFile='
+        line: 'PidFile=/run/zabbix/zabbix_agentd.pid'
+      notify: restart zabbix-agent
+
+    - name: Добавление PID строки если отсутствует
+      lineinfile:
+        path: /etc/zabbix/zabbix_agentd.conf
+        line: 'PidFile=/run/zabbix/zabbix_agentd.pid'
+        insertafter: EOF
+      when: not ansible_check_mode
+
+    - name: Перезагрузка systemd
+      systemd:
+        daemon_reload: yes
+
+    - name: Запуск агента
+      systemd:
+        name: zabbix-agent
+        state: started
+        enabled: yes
+
+    - name: Проверка PID файла
+      stat:
+        path: /run/zabbix/zabbix_agentd.pid
+      register: pid_file
+
+    - name: Результат
+      debug:
+        msg:
+          - "PID file exists: {{ pid_file.stat.exists }}"
+          - "PID file path: /run/zabbix/zabbix_agentd.pid"
+
+  handlers:
+    - name: restart zabbix-agent
+      systemd:
+        name: zabbix-agent
+        state: restarted
+        daemon_reload: yes

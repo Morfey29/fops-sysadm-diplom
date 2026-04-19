@@ -9,4 +9,4 @@ processors:
       fields: ["beat", "input_type", "prospector", "input", "host", "agent", "ecs"]
 
 output.elasticsearch:
-  hosts: ["10.0.3.25:9200"]
+  hosts: ["{{elastic_host}}"]

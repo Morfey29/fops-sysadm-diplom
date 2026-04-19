@@ -3,7 +3,7 @@
   hosts: kibana
   become: yes
   vars:
-    elastic_httphost: 10.0.3.25:9200
+    elastic_httphost: "{{ hostvars[groups['kibana'][0]]['ansible_host'] }}:9200"
   tasks:
 
   - name: Установка пакета kibana

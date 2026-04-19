@@ -18,7 +18,7 @@
 
     - name: Remove default nginx index page
       copy:
-        content: "<html><head><title>Netology. HTML Template</title></head><body><h1>Netology. Template</h1></body></html>"
+        content: "<html><head><title>Netology. HTML Template</title></head><body><h1>Netology. Coursework Doikov A.M.</h1></body></html>"
         dest: /var/www/html/index.html
         owner: www-data
         group: www-data

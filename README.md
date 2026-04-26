@@ -160,13 +160,14 @@ text
 ## ✅ Результаты проверки
 
 ### 1. Application Load Balancer
-'''bash
+```bash
 $ curl -v 81.26.178.199
 HTTP/1.1 200 OK
 server: ycalb
-'''
+```
 
 Вывод: ALB работает, сайт доступен
+
 2. Zabbix мониторинг
 
     Хосты: vm-web1, vm-web2 в статусе Enabled

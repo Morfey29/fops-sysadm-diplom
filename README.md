@@ -253,7 +253,7 @@ markdown
 
 update
 
-![ALB проверка](img/img7.png)
+![ALB проверка](img/img8.png)
 
 *Проверка доступности сайта через ALB: HTTP 200 OK, server: ycalb*
 
@@ -262,7 +262,7 @@ update
 
 update
 
-![ВМ в Yandex Cloud](img/img8.png)
+![ВМ в Yandex Cloud](img/img7.png)
 
 *Список виртуальных машин: bastion, zabbix, kibana, elastic, web-1, web-2*
 

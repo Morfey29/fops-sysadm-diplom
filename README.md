@@ -244,6 +244,32 @@ ansible web -i hosts.ini -m shell -a "systemctl status zabbix-agent"
 # Проверка логов в Elasticsearch
 curl -X GET "http://10.0.3.9:9200/_cat/indices"
 
+markdown
+
+## 📸 Подтверждение работоспособности
+
+### 1. Application Load Balancer
+![ALB проверка](img/img1.png)
+*Проверка доступности сайта через ALB: HTTP 200 OK, server: ycalb*
+
+### 2. Инфраструктура в Yandex Cloud
+![ВМ в Yandex Cloud](img/img3.png)
+*Список виртуальных машин: bastion, zabbix, kibana, elastic, web-1, web-2*
+
+![Все ВМ Running](img/Снимок%20экрана%20—%202026-04-26%20в%2018.17.08.png)
+*Все 6 виртуальных машин в статусе Running*
+
+### 3. Zabbix мониторинг
+![Zabbix хосты](img/img4.png)
+*Хосты web-1 и web-2 в Zabbix с активным статусом ZBX*
+
+![Zabbix графики](img/img5.png)
+*Графики метрик CPU, памяти, дисков и сети для web-1 и web-2*
+
+### 4. Kibana логи
+![Kibana логи](img/img6.png)
+*Логи nginx в Kibana: индекс filebeat-*, 12 437 записей*
+
 🔒 Безопасность
 Текущие настройки (учебный стенд)
 

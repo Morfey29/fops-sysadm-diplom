@@ -160,7 +160,7 @@ text
 ## ✅ Результаты проверки
 
 ### 1. Application Load Balancer
-```bash
+
 $ curl -v 81.26.178.199
 HTTP/1.1 200 OK
 server: ycalb

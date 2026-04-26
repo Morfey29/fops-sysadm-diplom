@@ -250,13 +250,22 @@ markdown
 
 ### 1. Application Load Balancer
 ![ALB проверка](img/img1.png)
+
+update
+
+![ALB проверка](img/img7.png)
+
 *Проверка доступности сайта через ALB: HTTP 200 OK, server: ycalb*
 
 ### 2. Инфраструктура в Yandex Cloud
 ![ВМ в Yandex Cloud](img/img3.png)
+
+update
+
+![ВМ в Yandex Cloud](img/img8.png)
+
 *Список виртуальных машин: bastion, zabbix, kibana, elastic, web-1, web-2*
 
-![Все ВМ Running](img/Снимок%20экрана%20—%202026-04-26%20в%2018.17.08.png)
 *Все 6 виртуальных машин в статусе Running*
 
 ### 3. Zabbix мониторинг
@@ -269,6 +278,10 @@ markdown
 ### 4. Kibana логи
 ![Kibana логи](img/img6.png)
 *Логи nginx в Kibana: индекс filebeat-*, 12 437 записей*
+
+### 4. Snapshot'ы дисков
+![Snapshot'ы дисков](img/img9.png)
+*yc compute: расписание исправно работатет*
 
 🔒 Безопасность
 Текущие настройки (учебный стенд)

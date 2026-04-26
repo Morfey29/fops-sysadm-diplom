@@ -160,33 +160,34 @@ text
 ## ✅ Результаты проверки
 
 ### 1. Application Load Balancer
-
+'''bash
 $ curl -v 81.26.178.199
 HTTP/1.1 200 OK
 server: ycalb
+'''
 
 Вывод: ALB работает, сайт доступен
 2. Zabbix мониторинг
 
-Хосты: vm-web1, vm-web2 в статусе Enabled
+    Хосты: vm-web1, vm-web2 в статусе Enabled
 
-Агенты: ZBX зеленый (активен)
+    Агенты: ZBX зеленый (активен)
 
-Метрики: CPU, Memory, Disk, Network собираются
+    Метрики: CPU, Memory, Disk, Network собираются
 
 3. Kibana + Filebeat
 
-Индекс: filebeat-*
+    Индекс: filebeat-*
 
-Количество записей: 12 437
+    Количество записей: 12 437
 
-Логи: nginx access.log и error.log индексируются
+    Логи: nginx access.log и error.log индексируются
 
 4. Snapshots
 
-Ежедневное резервное копирование дисков
+    Ежедневное резервное копирование дисков
 
-Хранение: 7 дней
+    Хранение: 7 дней
 
 🚀 Инструкция по запуску
 1. Развертывание инфраструктуры
